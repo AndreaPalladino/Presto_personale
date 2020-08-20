@@ -1,0 +1,172 @@
+:root{
+    --dieci: rgb(255,110,199);
+    --trenta: #08e8de;;
+
+}
+
+.text10{
+    color:var(--dieci);
+}
+
+.text30{
+    color:var(--trenta);
+}
+
+header {
+    position: relative;
+    background-color: black;
+    height: 100vh;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+  }
+.header_2 {
+    position: relative;
+    background-color: black;
+    height: 60vh !important;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+    transition: 1s ease-in-out;
+
+  }
+  
+  header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+  
+  header .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .letter{
+    display: inline-block;
+    animation: animate 1s linear;
+    
+    animation-fill-mode: backwards;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes animate{
+    0%{
+      opacity: 0;
+      transform: rotateY(90deg);
+      filter: blur(10px);
+    }
+    100%{
+      opacity: 1;
+      transform: rotateY(0deg);
+      filter: blur(0px);
+    }
+  }
+  
+  .letter:nth-child(1){
+    animation-delay: 0.25s;
+  }
+  .letter:nth-child(2){
+    animation-delay: 0.5s;
+  }
+  .letter:nth-child(3){
+    animation-delay: 1s;
+  }
+  .letter:nth-child(4){
+    animation-delay: 1.25s;
+  }
+  .letter:nth-child(5){
+    animation-delay: 1.5s;
+  }
+  .letter:nth-child(6){
+    animation-delay: 1.75s;
+  }
+
+  .btn-custom{
+      background-color: var(--dieci);
+      color:black;
+      opacity:0;
+  }
+
+.slug{
+    opacity: 0;
+    animation-name: sottotitolo;
+    animation-delay:2.9s;
+    animation-duration: 0.5s;;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes sottotitolo{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+  .animation{
+      animation-name: appari;
+      animation-delay:3.5s;
+      animation-duration: 0.5s;;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+  }
+
+  @keyframes appari{
+      from{
+          opacity: 0;
+      }
+      to{
+          opacity: 1;
+      }
+  }
+
+
+ /*  login */
+
+ .border-custom{
+     border-top: 0;
+     border-left: 0;
+     border-right: 0;
+     border-bottom: 2px solid #08e8de;
+ }
+
+ .btncustom{
+    background-color: var(--dieci);
+    color:black;
+    
+}
+
+
+
+
+
+.borderCard{
+    position: absolute;
+    width:600px !important;
+    right: 0% !important;
+    transform: translateX(300px);
+    /* border: 2px solid #08e8de; */
+}
