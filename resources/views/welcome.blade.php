@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('style')
-    
+    <style>
+      body{
+        background-color: black;
+      }
+    </style>
 @endsection
 @section('content')
     
@@ -26,6 +30,82 @@
       </div>
     </div>
   </header>
+
+   <div class="container my-5 py-5">
+     <div class="row">
+       <div class="col-12 ml-5">
+        <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+
+          <ol class="carousel-indicators">
+              <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#blogCarousel" data-slide-to="1"></li>
+          </ol>
+
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+
+              <div class="carousel-item active">
+                  <div class="row">
+                      <div class="col-md-3">
+                          <a href="#">
+                              <img src="/media/gamepad.png" alt="Image" width="100">
+                          </a>
+                      </div>
+                      <div class="col-md-3">
+                          <a href="#">
+                              <img src="/media/drug.png" alt="Image" width="100">
+                          </a>
+                      </div>
+                      <div class="col-md-3">
+                          <a href="#">
+                              <img src="/media/car.png" alt="Image" width="100">
+                          </a>
+                      </div>
+                      <div class="col-md-3">
+                          <a href="#">
+                              <img src="/media/home.png" alt="Image" width="100">
+                          </a>
+                      </div>
+                  </div>
+                  <!--.row-->
+              </div>
+              <!--.item-->
+
+              <div class="carousel-item">
+                  <div class="row">
+                      <div class="col-md-3">
+                          <a href="#">
+                              <img src="/media/kitchen.png" alt="Image" width="100">
+                          </a>
+                      </div>
+                      <div class="col-md-3">
+                          <a href="#">
+                              <img src="/media/linkedin.png" alt="Image" width="100">
+                          </a>
+                      </div>
+                      <div class="col-md-3">
+                          <a href="#">
+                              <img src="/media/running.png" alt="Image" width="100">
+                          </a>
+                      </div>
+                      <div class="col-md-3">
+                          <a href="#">
+                              <img src="/media/laptop.png" alt="Image" width="100">
+                          </a>
+                      </div>
+                  </div>
+                  <!--.row-->
+              </div>
+              <!--.item-->
+
+          </div>
+          <!--.carousel-inner-->
+      </div>
+      <!--.Carousel-->
+
+       </div>
+     </div>
+   </div>
 
 
 

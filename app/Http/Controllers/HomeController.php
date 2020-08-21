@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function newAnn()
     {
-        return view('announcement.new');
+        return view('announcements.new');
     }
 }
