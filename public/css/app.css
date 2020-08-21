@@ -11134,6 +11134,11 @@ header .overlay {
   color: black;
 }
 
+.btncustom2 {
+  background-color: var(--trenta);
+  color: black;
+}
+
 .borderCard {
   position: absolute;
   width: 600px !important;
@@ -11190,5 +11195,19 @@ header .overlay {
 
 .cat {
   font-size: 15px !important;
+}
+
+.heightCustom {
+  height: 10vh !important;
+}
+
+.cardCustom {
+  background-color: transparent;
+  border: 2px solid var(--trenta);
+  color: var(--trenta) !important;
+}
+
+.fitImage {
+  width: 500;
 }
 

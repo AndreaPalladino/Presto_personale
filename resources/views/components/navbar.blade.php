@@ -10,11 +10,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-
+                <li class="nav-item">
+                    <button class="btn btncustom2 px-3" data-toggle="modal" data-target="#exampleModal">Search</button>
+                </li>
             </ul>
              {{-- center part --}}
              <a class="navbar-brand d-none d-md-flex ml-5 pl-5" href="{{ url('/') }}">
-                <h4 class="ml-5 text10 cover">Presto</h4>
+                <h4 class=" text10 cover">Presto</h4>
             </a>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -51,3 +53,23 @@
         </div>
     </div>
 </nav>
+
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-body bg-dark">
+          <form action="" method="get">
+              @csrf
+              <input type="text" name="q" placeholder="Search" class="form-control border-custom bg-transparent my-5">
+              <button type="button" class="btn btncustom mt-3 mx-auto d-block" data-dismiss="modal">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

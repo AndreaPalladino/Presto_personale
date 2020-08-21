@@ -15,4 +15,8 @@ class Announcement extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    static public function TotalCount(){
+        return Announcement::all()->count();
+    }
 }

@@ -33,8 +33,16 @@
 
    <div class="container my-5 py-5">
      <div class="row">
+         @foreach($categories as $c)
+         <div class="col-12 d-flex d-md-none bg30 my-2 flex-column justify-content-center align-items-center">
+             <div class= "heightCustom">
+                <a href="{{route('public.announcements', [$c->id])}}" class="">
+                <h3 class="text-dark mt-3">{{$c->name}}</h3></a>
+             </div>
+         </div>
+         @endforeach
        <div class="col-6 col-md-12 ml-5">
-        <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+        <div id="blogCarousel" class="carousel slide d-none d-md-flex" data-ride="carousel">
 
           <ol class="carousel-indicators">
               <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
@@ -116,35 +124,68 @@
    </div>
 
    
-   <div class="container my- 5 py-5">
+   <div class="container my-5 py-5">
        <div class="row justify-content-center ">
-        {{-- <h3 class="text30 mb-5">Recently added..</h3>
-        <div class="col-12 col-md-2 d-flex flex-column align-items-center justify-content-center">
-            
-            <img src="/media/neon.png" alt="" height="100">
-           </div>  --}}
            @foreach ($announcements as $a)
            <div class="col-12 col-md-6 col-lg-4 mb-4">
-           
-            <div class="card" style="width: 18rem;">
-                <img src="https://picsum.photos/150/150
-                " class="card-img-top" alt="...">
+
+            <div class="card cardCustom h-100">
+                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                 <div class="card-body">
-                  <h3 class="bg30">{{$a->title}} </h3>
+                  <h4 class="card-title">
+                    {{$a->title}}
+                  </h4>
                   <p class="cat"><a href="{{route('public.announcements', [$a->category->id])}}" class="text10">{{$a->category->name}}</a></p>
-                <p class="text-right">Added by: {{$a->user->name}}</p>
+                  <p class="text-right">Added by: {{$a->user->name}}</p>
                   <p class="card-text">{{$a->description}}</p>
                   <button class="btncustom mt-2 mx-auto d-block">Details</button>
                 </div>
-              </div>
-                       
+              </div>   
            </div>
            @endforeach   
        </div>
    </div> 
 
 
-
+   <div class="container my-5 py-5">
+       <div class="row">
+           <div class="col-12">
+            <div class="card bg-dark text-white">
+                <img src="/media/users.jpeg" class="card-img fitImage" alt="...">
+                <div class="card-img-overlay">
+                  <h2 class="card-body mt-5 ml-4">2000 Users</h5>
+                  <p class="card-text ml-5">Last count 3 mins ago</p>
+                </div>
+              </div>
+           </div>
+       </div>
+   </div>
+   <div class="container my-5 py-5">
+    <div class="row">
+        <div class="col-12">
+         <div class="card bg-dark text-white">
+             <img src="/media/products (1).jpeg" class="card-img" alt="...">
+             <div class="card-img-overlay">
+                <h2 class="card-body mt-5 ml-4">{{\App\Announcement::TotalCount()}} Announcements</h5>
+                    <p class="card-text ml-5">Last count 3 mins ago</p>
+             </div>
+           </div>
+        </div>
+    </div>
+</div>
+<div class="container my-5 py-5">
+    <div class="row">
+        <div class="col-12">
+         <div class="card bg-dark text-white">
+             <img src="/media/love.jpeg" class="card-img" alt="...">
+             <div class="card-img-overlay">
+                <h2 class="card-body mt-5 ml-4">1500 positive ratings</h5>
+                <p class="card-text ml-5">Last count 3 mins ago</p>
+             </div>
+           </div>
+        </div>
+    </div>
+</div>
 
 
 
