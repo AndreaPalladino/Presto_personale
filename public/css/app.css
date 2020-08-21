@@ -10909,6 +10909,10 @@ a.text-dark:focus {
   --trenta: #08e8de;
 }
 
+.bg30 {
+  background-color: var(--trenta);
+}
+
 .text10 {
   color: var(--dieci);
 }
@@ -11118,6 +11122,13 @@ header .overlay {
   border-bottom: 2px solid #08e8de;
 }
 
+.textBorder {
+  border-top: 2px solid #08e8de;
+  border-left: 2px solid #08e8de;
+  border-right: 2px solid #08e8de;
+  border-bottom: 2px solid #08e8de;
+}
+
 .btncustom {
   background-color: var(--dieci);
   color: black;
@@ -11169,5 +11180,15 @@ header .overlay {
   border-bottom: 10px solid transparent;
   opacity: 0.5;
   transition: opacity 0.6s ease;
+}
+
+.footer {
+  -webkit-clip-path: polygon(25% 0, 37% 11%, 46% 0, 61% 8%, 73% 0, 88% 7%, 100% 0, 100% 10%, 100% 100%, 0 100%, 0 0, 12% 8%);
+          clip-path: polygon(25% 0, 37% 11%, 46% 0, 61% 8%, 73% 0, 88% 7%, 100% 0, 100% 10%, 100% 100%, 0 100%, 0 0, 12% 8%);
+  background: linear-gradient(180deg, var(--trenta) 10%, black, black, black);
+}
+
+.cat {
+  font-size: 15px !important;
 }
 

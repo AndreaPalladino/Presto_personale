@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Announcement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,20 @@ class HomeController extends Controller
     public function newAnn()
     {
         return view('announcements.new');
+    }
+
+    public function storeAnn(Request $request){
+        $user = Auth::user();
+        $a = new Announcement();
+
+        $a->title = $request->input('title');
+        $a->description = $request->input('description');
+        $a->category_id = $request->input('category');
+        $a->user_id = $user->id;
+
+        $a->save();
+
+        return redirect('/')->with('ann.ok','ok');
+
     }
 }
