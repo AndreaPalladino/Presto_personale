@@ -12,7 +12,7 @@ class PublicController extends Controller
 {
     public function homepage(){
 
-        $announcements = Announcement::orderBy('created_at', 'desc')->take(6)->get();
+        $announcements = Announcement::where('is_accepted',true)->orderBy('created_at', 'desc')->take(6)->get();
 
         return view('welcome', compact('announcements'));
     }
@@ -20,7 +20,7 @@ class PublicController extends Controller
     public function annByCategory($category_id){
 
         $category = Category::find($category_id);
-        $announcements = $category->announcements()->orderBy('created_at', 'desc')->simplePaginate(10);
+        $announcements = $category->announcements()->where('is_accepted',true)->orderBy('created_at', 'desc')->simplePaginate(10);
 
         return view('annByCat', compact('category', 'announcements'));
     }
@@ -28,7 +28,7 @@ class PublicController extends Controller
     public function detail(Announcement $announcement){
 
         $user = User::find($announcement->user_id);
-        $announcements = $user->announcements()->where('id','!=', $announcement->id)->orderBy('created_at','desc')->get();
+        $announcements = $user->announcements()->where('id','!=', $announcement->id)->where('is_accepted',true)->orderBy('created_at','desc')->get();
 
         $feeds = $announcement->feedbacks()->get();
 
@@ -39,7 +39,7 @@ class PublicController extends Controller
 
         
         $q = $request->input('q');
-        $announcements = Announcement::search($q)->orderBy('created_at','desc')->get();
+        $announcements = Announcement::search($q)->where('is_accepted',true)->orderBy('created_at','desc')->get();
 
         return view('search', compact('q','announcements'));
     }

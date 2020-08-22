@@ -250,3 +250,34 @@ background: linear-gradient(180deg, var(--trenta) 10%, black, black,black);
 .fitImage{
   width:500;
 }
+
+.title{
+  
+  animation-name: scompari;
+  animation-duration: 0.5;
+  animation-iteration-count: 1;
+  animation-delay: 3;
+}
+
+@keyframes scompari{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+.fluo{
+  width: 100%;
+  height: 2px;
+  background-color: var(--trenta);
+}
+
+.badge-custom{
+  background-color: var(--trenta);
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: var(--dieci);
+}

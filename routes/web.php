@@ -21,6 +21,7 @@ Route::get('/announcements/search', 'PublicController@search')->name('public.sea
 
 
 /* UTENTI LOGGATI */
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/announcement/new', 'HomeController@newAnn')->name('ann.new');
 Route::post('/announcement/post', 'HomeController@storeAnn')->name('ann.store');
@@ -28,6 +29,9 @@ Route::post('/feedbacks/{id}/send', 'HomeController@feedback')->name('feed.store
 
 
 /* REVISORE */
-Auth::routes();
+Route::get('/revisor/home', 'RevisorController@home')->name('revisorHome');
+Route::post('/revisor/{announcement}/accept', 'RevisorController@accept')->name('revisor.accept');
+Route::post('/revisor/{announcement}/reject', 'RevisorController@reject')->name('revisor.reject');
+
 
 

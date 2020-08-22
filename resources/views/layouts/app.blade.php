@@ -40,6 +40,8 @@
    
 
  <!-- Scripts -->
+ <script src="https://kit.fontawesome.com/08e7b077b9.js" crossorigin="anonymous"></script>
+
  <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

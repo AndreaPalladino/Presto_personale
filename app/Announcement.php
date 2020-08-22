@@ -26,7 +26,11 @@ class Announcement extends Model
     }
 
     static public function TotalCount(){
-        return Announcement::all()->count();
+        return Announcement::where('is_accepted',true)->count();
+    }
+
+    static public function ToBeRevisioned(){
+        return Announcement::where('is_accepted',null)->count();
     }
 
     public function toSearchableArray(){

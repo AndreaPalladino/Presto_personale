@@ -16,10 +16,12 @@
             </ul>
              {{-- center part --}}
              <a class="navbar-brand d-none d-md-flex ml-5 pl-5" href="{{ url('/') }}">
-                <h4 class=" text10 cover">Presto</h4>
+                <h4 class=" text10 cover mx-auto ">Presto</h4>
             </a>
             <!-- Right Side Of Navbar -->
+            
             <ul class="navbar-nav ml-auto">
+                
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
@@ -31,7 +33,19 @@
                         </li>
                     @endif
                 @else
-                    <li class="nav-item dropdown text10">
+                @if(Auth::user()->is_revisor)
+                <li class="nav-item dropdown text10">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle text10 " href="{{route('revisorHome')}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Revisor Home
+                       <span class="badge badge-pill badge-custom">{{\App\Announcement::ToBeRevisioned()}}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('revisorHome')}}"><i class="fas fa-check mr-1"></i> To Revise</a>
+                        <a class="dropdown-item" href="{{-- {{route('rejectedadds')}} --}}"><i class="fas fa-times mr-1"></i> Rejected Ads</a>
+                    </div>
+                </li>
+                @endif
+                    <li class="nav-item dropdown text10 mt-2 ml-2">
                         <a id="navbarDropdown" class=" dropdown-toggle text10" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret d-none"></span>
                         </a>
