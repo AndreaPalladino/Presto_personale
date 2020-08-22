@@ -27,6 +27,7 @@ Route::get('/announcement/new', 'HomeController@newAnn')->name('ann.new');
 Route::post('/announcement/post', 'HomeController@storeAnn')->name('ann.store');
 Route::post('/feedbacks/{id}/send', 'HomeController@feedback')->name('feed.store');
 Route::get('/user/profile', 'HomeController@profile')->name('profile');
+Route::post('/user/revise/{id}/again', 'HomeController@reviseAgain')->name('revise.again');
 
 
 /* REVISORE */

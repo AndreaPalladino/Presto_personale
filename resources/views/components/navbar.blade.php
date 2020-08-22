@@ -45,7 +45,7 @@
                     </div>
                 </li>
                 @endif
-                    <li class="nav-item dropdown text10 mt-2 ml-2">
+                    <li class="nav-item dropdown text10 mt-2 ml-md-2">
                         <a id="navbarDropdown" class=" dropdown-toggle text10" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret d-none"></span>
                         </a>

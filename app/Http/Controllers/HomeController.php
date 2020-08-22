@@ -64,6 +64,19 @@ class HomeController extends Controller
 
     public function profile(){
 
-        return view('profile');
+        $user = Auth::user();
+        $accettati = $user->announcements()->where('is_accepted',true)->simplePaginate(6);
+        $sospesi = $user->announcements()->where('is_accepted', null)->simplePaginate(6);
+        $rifiutati = $user->announcements()->where('is_accepted', false)->simplePaginate(6);
+
+
+        return view('profile', compact('user', 'accettati', 'sospesi', 'rifiutati'));
+    }
+
+    public function reviseAgain($ann_id){
+        $announcement = Announcement::find($ann_id);
+        $announcement->is_accepted = null;
+        $announcement->save();
+        return redirect()->back();
     }
 }
