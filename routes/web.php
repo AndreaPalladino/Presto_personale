@@ -16,13 +16,14 @@ use Illuminate\Support\Facades\Route;
 /* CHIUNQUE */
 Route::get('/', 'PublicController@homepage')->name('homepage');
 Route::get('/category/{id}/announcements', 'PublicController@annByCategory')->name('public.announcements');
+Route::get('/announcement/{announcement}/detail', 'PublicController@detail')->name('public.detail');
 
 
 /* UTENTI LOGGATI */
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/announcement/new', 'HomeController@newAnn')->name('ann.new');
 Route::post('/announcement/post', 'HomeController@storeAnn')->name('ann.store');
-
+Route::post('/feedbacks/{id}/send', 'HomeController@feedback')->name('feed.store');
 
 
 /* REVISORE */

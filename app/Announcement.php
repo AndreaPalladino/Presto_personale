@@ -4,6 +4,7 @@ namespace App;
 
 use App\User;
 use App\Category;
+use App\Feedback;
 use Illuminate\Database\Eloquent\Model;
 
 class Announcement extends Model
@@ -14,6 +15,10 @@ class Announcement extends Model
 
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function feedbacks(){
+        return $this->hasMany(Feedback::class);
     }
 
     static public function TotalCount(){

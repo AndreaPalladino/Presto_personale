@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Feedback;
 use App\Announcement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,24 @@ class HomeController extends Controller
         $a->save();
 
         return redirect('/')->with('ann.ok','ok');
+
+    }
+
+    public function feedback(Request $request, $announcement_id){
+
+        
+        $user = Auth::user();
+        $f = new Feedback();
+        
+        $f->body = $request->input('body');
+        $f->user_id = $user->id;
+        $f->announcement_id = $announcement_id;
+        $f->email = $request->input('email');
+        $f->name = $request->input('name');
+
+        $f->save();
+
+        return redirect()->back();
 
     }
 }
