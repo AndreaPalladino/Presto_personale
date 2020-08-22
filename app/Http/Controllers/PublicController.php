@@ -34,4 +34,13 @@ class PublicController extends Controller
 
         return view('annDetail', compact('announcement','announcements', 'feeds'));
     }
+
+    public function search(Request $request){
+
+        
+        $q = $request->input('q');
+        $announcements = Announcement::search($q)->orderBy('created_at','desc')->get();
+
+        return view('search', compact('q','announcements'));
+    }
 }

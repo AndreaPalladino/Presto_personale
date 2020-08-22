@@ -64,7 +64,7 @@
       <div class="modal-content">
         
         <div class="modal-body bg-dark">
-          <form action="" method="get">
+        <form action="{{route('public.search')}}" method="get">
               @csrf
               <input type="text" name="q" placeholder="Search" class="form-control border-custom bg-transparent my-5">
               <button type="button" class="btn btncustom mt-3 mx-auto d-block" data-dismiss="modal">Search</button>

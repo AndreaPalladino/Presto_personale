@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PublicController@homepage')->name('homepage');
 Route::get('/category/{id}/announcements', 'PublicController@annByCategory')->name('public.announcements');
 Route::get('/announcement/{announcement}/detail', 'PublicController@detail')->name('public.detail');
+Route::get('/announcements/search', 'PublicController@search')->name('public.search');
 
 
 /* UTENTI LOGGATI */

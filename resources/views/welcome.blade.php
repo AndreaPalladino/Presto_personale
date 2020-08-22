@@ -8,6 +8,13 @@
 @endsection
 @section('content')
     
+@if (session('access.denied'))
+    <div class="alert alert-danger text-center">
+      Access denied. Revisor only!
+
+    </div>
+    
+@endif
  <header id="header">
     <div class="overlay"></div>
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -30,6 +37,8 @@
       </div>
     </div>
   </header>
+
+  
 
    <div class="container my-5 py-5">
      <div class="row">
