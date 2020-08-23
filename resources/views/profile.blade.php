@@ -175,23 +175,24 @@
 		</div>	
 	</div>
 </div>
-
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center text30">Ads created</h3>
+    </div>
+  </div>
+</div>
 <div class="container portfolio">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="heading">				
-				<h3 class="text30">Your ads</h3>
-			</div>
-		</div>	
-	</div>
 	<div class="bio-info">
 		<div class="row">
 			
 			   <div class="col-12">
                 <div class="nav  nav-pills mb-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="flex-sm-fill text-sm-center nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Accepted</a>
+                    @if(Auth::user()->id == $user->id)
                     <a class="flex-sm-fill text-sm-center nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Revisioning</a>
                     <a class="flex-sm-fill text-sm-center nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Rejected</a>
+                    @endif
                 </div>
 			   </div>
 				<div class="tab-content d-flex flex-wrap wrap-column" id="v-pills-tabContent">

@@ -435,7 +435,7 @@ img {
                         <span class="ml-3 text-white">{{$feed->body}}</span>
                     </div>
                     @endforeach
-                    @auth
+                    @if(Auth::user()->id != $announcement->user->id)
                 <form id="contact-form" method="POST" action="{{route('feed.store', [$announcement->id])}}">
                         @csrf
                         <div class="row">
@@ -461,7 +461,7 @@ img {
                             </div>
                         </div>
                     </form>
-                    @endauth
+                    @endif
                 </div>
             </div>
             <div class="col-lg-4 m-15px-tb blog-aside">
@@ -480,6 +480,10 @@ img {
                             </div>
                         </div>
                         <p class="text-white">I design and develop services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores</p>
+                        @if(Auth::user()->id != $announcement->user->id)
+                        <button class="btncustom">Contact</button>
+                      <a href="{{route('profile.view', [$announcement->user])}}" class="btn btncustom2 float-right">View Profile</a>
+                        @endif
                     </div>
                 </div>
                 <!-- End Author -->

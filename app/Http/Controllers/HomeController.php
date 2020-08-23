@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Feedback;
 use App\Announcement;
 use Illuminate\Http\Request;
@@ -78,5 +79,13 @@ class HomeController extends Controller
         $announcement->is_accepted = null;
         $announcement->save();
         return redirect()->back();
+    }
+
+    public function viewProfile($user_id){
+        $user = User::find($user_id);
+        $accettati = $user->announcements()->where('is_accepted',true)->simplePaginate(6);
+        $sospesi = $user->announcements()->where('is_accepted', null)->simplePaginate(6);
+        $rifiutati = $user->announcements()->where('is_accepted', false)->simplePaginate(6);
+        return view('profile', compact('user', 'accettati', 'sospesi', 'rifiutati'));
     }
 }
