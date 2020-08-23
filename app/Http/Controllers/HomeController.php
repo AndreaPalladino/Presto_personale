@@ -6,7 +6,9 @@ use App\User;
 use App\Feedback;
 use App\Announcement;
 use Illuminate\Http\Request;
+use App\Mail\ContactRecieved;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -87,5 +89,13 @@ class HomeController extends Controller
         $sospesi = $user->announcements()->where('is_accepted', null)->simplePaginate(6);
         $rifiutati = $user->announcements()->where('is_accepted', false)->simplePaginate(6);
         return view('profile', compact('user', 'accettati', 'sospesi', 'rifiutati'));
+    }
+
+    public function contactSeller(ContactRecieved $contact){
+
+        $email = $contact->email;
+        Mail::send($email)->to(new ContactRecieved($contact));
+
+        return redirect()->back();
     }
 }

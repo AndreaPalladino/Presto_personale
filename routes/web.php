@@ -29,6 +29,7 @@ Route::post('/feedbacks/{id}/send', 'HomeController@feedback')->name('feed.store
 Route::get('/user/profile', 'HomeController@profile')->name('profile');
 Route::get('/user/{id}/profilo', 'HomeController@viewProfile')->name('profile.view');
 Route::post('/user/revise/{id}/again', 'HomeController@reviseAgain')->name('revise.again');
+Route::post('/user/contactSeller', 'HomeController@contactSeller')->name('contact.seller');
 
 
 /* REVISORE */
