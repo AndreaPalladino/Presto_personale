@@ -5,8 +5,9 @@ namespace App;
 use App\User;
 use App\Category;
 use App\Feedback;
-use Illuminate\Database\Eloquent\Model;
+use App\AnnouncementImage;
 use Laravel\Scout\Searchable;
+use Illuminate\Database\Eloquent\Model;
 
 
 class Announcement extends Model
@@ -23,6 +24,10 @@ class Announcement extends Model
 
     public function feedbacks(){
         return $this->hasMany(Feedback::class);
+    }
+
+    public function images(){
+        return $this->hasMany(AnnouncementImage::class);
     }
 
     static public function TotalCount(){

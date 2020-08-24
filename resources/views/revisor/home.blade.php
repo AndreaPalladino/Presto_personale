@@ -26,9 +26,9 @@
   <div class="container my-5 py-5">
     <div class="row">
         <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-          </a>
+          @foreach($announcement->images as $image)
+            <img class="img-fluid rounded mb-3 mb-md-0" src="{{Storage::url($image->file)}}" alt="">
+          @endforeach
         </div>
         <div class="col-md-5 card cardCustom">
           <h3 class="mt-3 text10">{{$announcement->title}}</h3>

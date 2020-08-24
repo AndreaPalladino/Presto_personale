@@ -33,6 +33,9 @@ Route::post('/user/{id}/contactSeller', 'HomeController@contactSeller')->name('c
 Route::get('/user/announcement/{announcement}/edit', 'HomeController@edit')->name('edit');
 Route::put('/user/announcement/{announcement}/update', 'HomeController@update')->name('update');
 Route::delete('/user/announcement/{announcement}/delete', 'HomeController@delete')->name('delete');
+Route::post('/announcement/images/upload', 'HomeController@uploadImage')->name('announcement.images.upload');
+Route::delete('/announcement/images/remove', 'HomeController@removeImage')->name('announcement.images.remove');
+Route::get('/announcement/images', 'HomeController@getImages')->name('announcement.images');
 
 
 

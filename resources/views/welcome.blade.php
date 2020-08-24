@@ -139,7 +139,7 @@
            <div class="col-12 col-md-6 col-lg-4 mb-4">
 
             <div class="card cardCustom h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <img class="card-img-top" src="{http://placehold.it/700x400}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     {{$announcement->title}}
@@ -196,6 +196,17 @@
     </div>
 </div>
 
+@push('script')
+<script>
+let header = document.querySelector('#header')
 
+console.log(header)
+setTimeout(function(){ header.classList.add("header_2"); }, 3000);
+
+$('#blogCarousel').carousel({
+    interval: 5000
+});
+</script>
+@endpush
 
 @endsection

@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Feedback;
 use App\Announcement;
+use App\AnnouncementImage;
 use Illuminate\Http\Request;
 use App\Mail\ContactRecieved;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -27,9 +30,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function newAnn()
+    public function newAnn(Request $request)
     {
-        return view('announcements.new');
+        $uniqueSecret = $request->old('uniqueSecret', base_convert(sha1(uniqid(mt_rand())), 16, 36));
+        return view('announcements.new', compact('uniqueSecret'));
     }
 
     public function storeAnn(Request $request){
@@ -43,9 +47,94 @@ class HomeController extends Controller
 
         $a->save();
 
+        $uniqueSecret = $request->input('uniqueSecret');
+
+        $images = session()->get("images.{$uniqueSecret}", []);
+        $removedImages = session()->get("removedimages.{$uniqueSecret}",[]);
+
+        $images = array_diff($images, $removedImages);
+
+        
+
+        foreach ($images as $image) {
+            $i = new AnnouncementImage();
+
+            $fileName = basename($image);
+            $newFileName = "public/announcement/{$a->id}/{$fileName}";
+            Storage::move($image, $newFileName);
+
+           
+
+            $i->file = $newFileName;
+            $i->announcement_id = $a->id;
+
+            $i->save();
+
+            
+                
+        }
+
+        File::deleteDirectory(storage_path("/app/public/temp/{$uniqueSecret}"));
+
         return redirect('/')->with('ann.ok','ok');
 
     }
+
+    public function uploadImage(Request $request){
+        
+        $uniqueSecret = $request->input('uniqueSecret');
+        $fileName = $request->file('file')->store("public/temp/{$uniqueSecret}");
+
+        /* dispatch(new ResizeImage(
+            $fileName,
+            120,
+            120
+        )); */
+
+        session()->push("images.{$uniqueSecret}", $fileName);
+
+        return response()->json(
+            [
+                'id'=>$fileName
+            ]
+           );
+
+   }
+
+   public function removeImage(Request $request){
+       $uniqueSecret = $request->input('uniqueSecret');
+
+       $fileName = $request->input('id');
+
+       session()->push("removedimages.{$uniqueSecret}", $fileName);
+
+       Storage::delete($fileName);
+
+       return response()->json('ok');
+   }
+
+   public function getImages(Request $request){
+    $uniqueSecret = $request->input('uniqueSecret');
+
+    $images = session()->get("images.{$uniqueSecret}",[]);
+    $removedImages = session()->get("removedimages.{$uniqueSecret}", []);
+
+    $images = array_diff($images, $removedImages);
+    
+    $data = [];
+
+    foreach ($images as $image) {
+        $data[] = [
+            'id' => $image,
+            /* 'src' =>AnnouncementImage::getUrlByFilePath($image, 120, 120) */
+        ];
+    }
+
+    return response()->json($data);
+}
+
+
+
 
     public function feedback(Request $request, $announcement_id){
 

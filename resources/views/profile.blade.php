@@ -1,140 +1,8 @@
 @extends('layouts.app')
 @section('style')
     <style>
-        body{
-		background-color: black;
-	}
-	.portfolio{
-		padding:6%;
-		text-align:center;
-	}
-	.heading{
-		background: transparent;
-		padding: 1%;
-		text-align: left;
-		box-shadow: 0px 0px 4px 0px #545b62;
-        border: 2px solid var(--trenta);
-	}
-	.heading img{
-		width: 10%;
-	}
-	.bio-info{
-		padding: 5%;
-		background:transparent;
-		box-shadow: 0px 0px 4px 0px #b0b3b7;
-        border: 2px solid var(--trenta);
-	}
-	.name{
-		font-family: 'Charmonman', cursive;
-		font-weight:600;
-	}
-	.bio-image{
-		text-align:center;
-	}
-	.bio-image img{
-		border-radius:50%;
-	}
-	.bio-content{
-		text-align:left;
-	}
-	.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: black;
-    background-color: var(--dieci);
-}
-.blog-aside .widget {
-  box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
-  border-radius: 5px;
-  overflow: hidden;
-  background: transparent;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  width: 100%;
-  display: inline-block;
-  vertical-align: top;
-  border: 2px solid var(--trenta);
-}
-.blog-aside .widget-body {
-  padding: 15px;
-}
-.blog-aside .widget-title {
-  padding: 15px;
-  border-bottom: 1px solid var(--trenta);
-}
-.blog-aside .widget-title h3 {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--dieci);
-  margin: 0;
-}
-.blog-aside .widget-author .media {
-  margin-bottom: 15px;
-}
-.blog-aside .widget-author p {
-  font-size: 16px;
-  margin: 0;
-}
-.blog-aside .widget-author .avatar {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-.blog-aside .widget-author h6 {
-  font-weight: 600;
-  color: var(--trenta);
-  font-size: 22px;
-  margin: 0;
-  padding-left: 20px;
-}
-.blog-aside .post-aside {
-  margin-bottom: 15px;
-}
-.blog-aside .post-aside .post-aside-title h5 {
-  margin: 0;
-}
-.blog-aside .post-aside .post-aside-title a {
-  font-size: 18px;
-  color: var(--dieci);
-  font-weight: 600;
-}
-.blog-aside .post-aside .post-aside-meta {
-  padding-bottom: 10px;
-}
-.blog-aside .post-aside .post-aside-meta a {
-  color: #6F8BA4;
-  font-size: 12px;
-  text-transform: uppercase;
-  display: inline-block;
-  margin-right: 10px;
-}
-.blog-aside .latest-post-aside + .latest-post-aside {
-  border-top: 1px solid #eee;
-  padding-top: 15px;
-  margin-top: 15px;
-}
-.blog-aside .latest-post-aside .lpa-right {
-  width: 90px;
-}
-.blog-aside .latest-post-aside .lpa-right img {
-  border-radius: 3px;
-}
-.blog-aside .latest-post-aside .lpa-left {
-  padding-right: 15px;
-}
-.blog-aside .latest-post-aside .lpa-title h5 {
-  margin: 0;
-  font-size: 15px;
-}
-.blog-aside .latest-post-aside .lpa-title a {
-  color: var(--trenta);
-  font-weight: 600;
-}
-.blog-aside .latest-post-aside .lpa-meta a {
-  color: #6F8BA4;
-  font-size: 12px;
-  text-transform: uppercase;
-  display: inline-block;
-  margin-right: 10px;
+       body{
+    background-color: black;
 }
     </style>
 @endsection
@@ -205,10 +73,10 @@
                      
                         <div class="widget-body">
                             @foreach($accettati as $announcement)
-                            <div class="latest-post-aside media">
+                            <div class="latest-post-aside media mt-5">
                                 <div class="lpa-left media-body">
                                     <div class="lpa-title text30">
-                                    <h5 ><a class="text30" href="{{route('public.detail', compact('announcement'))}}">{{$announcement->title}}</a></h5>
+                                    <h5 class="mt-5"><a class="text30" href="{{route('public.detail', compact('announcement'))}}">{{$announcement->title}}</a></h5>
                                     </div>
                                     <div class="lpa-meta">
                                         
@@ -239,10 +107,10 @@
                                       </div>
                                     </div>
                                 </div>
-                                <div class="lpa-right ml-5 mb-5">
-                                    <a href="#">
+                                <div class="col-12 col-md-6 d-none d-md-flex lpa-right ml-5 mb-5">
+                                    
                                         <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title="" alt="">
-                                    </a>
+                                    
                                    
                                 </div>
                             </div>
@@ -337,11 +205,13 @@
 @if(!Auth::user()->is_revisor)
 <div class="container mb-5">
   <div class="row">
-    <div class="col-12">
-      <hr class="fluo">
-      <h4 class="text30 text-center">You wanna be a revisor? Click down below</h4>
-      <button class="btn btncustom mx-auto d-block mt-2">RevisorMaker</button>
-      <hr class="fluo">
+    <div class="col-12 ml-md-5">
+      <div class="bio-info2 ml-3 ml-md-5">
+        <h4 class="text30 text-center">You wanna be a revisor? Click down below</h4>
+        <button class="btn btncustom mx-auto d-block mt-2">RevisorMaker</button>
+      </div>
+      
+      
     </div>
   </div>
 </div>
