@@ -109,7 +109,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 d-none d-md-flex lpa-right ml-5 mb-5">
                                     
-                                        <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title="" alt="">
+                                        <img src="{{$announcement->images->first()->getUrl(700, 300)}}" title="" alt="">
                                     
                                    
                                 </div>
@@ -175,7 +175,7 @@
                                 </div>
                                 <div class="lpa-right ml-5 mb-5">
                                     
-                                        <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title="" alt="">
+                                        <img src="{{$announcement->images->first()->getUrl(300, 150)}}" title="" alt="">
                                     
                                 </div>
                             </div>
@@ -202,7 +202,7 @@
 		</div>	
 	</div>
 </div>
-@if(!Auth::user()->is_revisor)
+@if(Auth::user()->id==$user->id && !Auth::user()->is_revisor)
 <div class="container mb-5">
   <div class="row">
     <div class="col-12 ml-md-5">

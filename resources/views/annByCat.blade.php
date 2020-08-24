@@ -15,7 +15,7 @@
            <div class="col-12 col-md-6 col-lg-4 mb-4">
 
             <div class="card cardCustom h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="{{$announcement->images->first()->getUrl(300,150)}}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     {{$announcement->title}}

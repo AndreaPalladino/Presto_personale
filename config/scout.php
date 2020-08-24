@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'driver' => env('SCOUT_DRIVER', 'tntsearch'),
+    'driver' => 'tntsearch',
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'queue' => env('SCOUT_QUEUE', false),
+    'queue' => env('SCOUT_QUEUE', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -104,14 +104,14 @@ return [
     ],
     'tntsearch' => [
         'storage'  => storage_path(), //place where the index files will be stored
-        'fuzziness' => env('TNTSEARCH_FUZZINESS', false),
+        'fuzziness' =>  false,
         'fuzzy' => [
             'prefix_length' => 3,
             'max_expansions' => 50,
             'distance' => 3
         ],
         'asYouType' => false,
-        'searchBoolean' => env('TNTSEARCH_BOOLEAN', true),
+        'searchBoolean' =>  true,
     ],
 
 ];

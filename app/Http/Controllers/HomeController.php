@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Feedback;
 use App\Announcement;
+use App\Jobs\ResizeImage;
 use App\AnnouncementImage;
 use Illuminate\Http\Request;
 use App\Mail\ContactRecieved;
@@ -63,14 +64,29 @@ class HomeController extends Controller
             $newFileName = "public/announcement/{$a->id}/{$fileName}";
             Storage::move($image, $newFileName);
 
-           
+            
+            dispatch(new ResizeImage(
+                $newFileName,
+                300,
+                150
+            )); 
+
+            dispatch(new ResizeImage(
+                $newFileName,
+                700,
+                300
+            )); 
+
+            
+            
+            
 
             $i->file = $newFileName;
             $i->announcement_id = $a->id;
 
             $i->save();
-
             
+           
                 
         }
 
@@ -85,11 +101,11 @@ class HomeController extends Controller
         $uniqueSecret = $request->input('uniqueSecret');
         $fileName = $request->file('file')->store("public/temp/{$uniqueSecret}");
 
-        /* dispatch(new ResizeImage(
+        dispatch(new ResizeImage(
             $fileName,
             120,
             120
-        )); */
+        )); 
 
         session()->push("images.{$uniqueSecret}", $fileName);
 
@@ -126,7 +142,7 @@ class HomeController extends Controller
     foreach ($images as $image) {
         $data[] = [
             'id' => $image,
-            /* 'src' =>AnnouncementImage::getUrlByFilePath($image, 120, 120) */
+            'src' =>AnnouncementImage::getUrlByFilePath($image, 120, 120)
         ];
     }
 
@@ -188,7 +204,7 @@ class HomeController extends Controller
         
         Mail::to($email)->send(new ContactRecieved($contact));
 
-        return redirect()->back();
+        return redirect()->back()->with('contact', 'ok');
     }
 
     public function edit(Announcement $announcement){

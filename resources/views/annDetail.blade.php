@@ -13,7 +13,7 @@
             <div class="col-lg-8 m-15px-tb">
                 <article class="article">
                     <div class="article-img">
-                        <img src="https://via.placeholder.com/800x350/87CEFA/000000" title="" alt="">
+                        <a href="" class="btn"><img src="{{$announcement->images->first()->getUrl(700,300)}}" title="" alt=""></a>
                     </div>
                     <div class="article-title">
                     
@@ -33,6 +33,36 @@
                         
                         <div>
                             <h3 class="text10">Other images</h3>
+                            @foreach($announcement->images as $image)
+                        <a href="" class="btn" data-toggle="modal" data-target="#carouselModal"><img src="{{$image->getUrl(300,150)}}" alt="" height="90" class="mx-2 mb-3"></a>
+                        <div class="modal fade" id="carouselModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                
+                                <div class="modal-body">
+                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                          @foreach($announcement->images as $key=>$image)
+                                          <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                          <img src="{{$image->getUrl(700,300)}}" class="d-block w-100">
+                                          </div>
+                                          @endforeach
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                          <span class="carousel-control-prev-icon margin-custom" aria-hidden="true"></span>
+                                          <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                          <span class="sr-only">Next</span>
+                                        </a>
+                                      </div>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="nav tag-cloud">
@@ -77,6 +107,7 @@
                     @endif
                 </div>
             </div>
+            
             <div class="col-lg-4 m-15px-tb blog-aside">
                 <!-- Author -->
                 <div class="widget widget-author">
@@ -100,6 +131,12 @@
                       </form>
                        
                       <a href="{{route('profile.view', [$announcement->user])}}" class="btn btncustom2  mx-auto my-2">View Profile</a>
+                        @endif
+                        @if (session('contact'))
+                         <div class="alert alert-success text-center">
+                             An email has been sent to the seller!
+                        </div>
+            
                         @endif
                     </div>
                 </div>
@@ -125,7 +162,7 @@
                             </div>
                             <div class="lpa-right">
                                 <a href="#">
-                                    <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title="" alt="">
+                                <img src="{{$announcement->images->first()->getUrl(300,150)}}" title="" alt="">
                                 </a>
                             </div>
                         </div>
@@ -153,3 +190,5 @@
     </div>
 </div>
 @endsection
+
+

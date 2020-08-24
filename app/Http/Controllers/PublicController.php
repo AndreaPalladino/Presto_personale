@@ -39,6 +39,7 @@ class PublicController extends Controller
 
         
         $q = $request->input('q');
+        
         $announcements = Announcement::search($q)->where('is_accepted',true)->orderBy('created_at','desc')->get();
 
         return view('search', compact('q','announcements'));

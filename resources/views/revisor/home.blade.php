@@ -26,9 +26,23 @@
   <div class="container my-5 py-5">
     <div class="row">
         <div class="col-md-7">
-          @foreach($announcement->images as $image)
-            <img class="img-fluid rounded mb-3 mb-md-0" src="{{Storage::url($image->file)}}" alt="">
-          @endforeach
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              @foreach($announcement->images as $key=>$image)
+              <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+              <img src="{{$image->getUrl(300,150)}}" class="d-block w-100">
+              </div>
+              @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon margin-custom" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
         </div>
         <div class="col-md-5 card cardCustom">
           <h3 class="mt-3 text10">{{$announcement->title}}</h3>

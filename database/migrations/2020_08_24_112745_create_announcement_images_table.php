@@ -19,7 +19,7 @@ class CreateAnnouncementImagesTable extends Migration
             $table->string('file');
 
             $table->unsignedBigInteger('announcement_id');
-            $table->foreign('announcement_id')->references('id')->on('announcements');
+            $table->foreign('announcement_id')->references('id')->on('announcements')->onDelete('cascade');
             $table->timestamps();
         });
     }
