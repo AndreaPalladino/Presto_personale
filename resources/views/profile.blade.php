@@ -185,7 +185,12 @@
 <div class="container portfolio">
 	<div class="bio-info">
 		<div class="row">
-			
+			@if (session('deleted'))
+    <div class="alert alert-success text-center">
+        Ad succesfully deleted!
+    </div>
+    
+@endif
 			   <div class="col-12">
                 <div class="nav  nav-pills mb-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="flex-sm-fill text-sm-center nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Accepted</a>
@@ -212,7 +217,27 @@
                                         </a>
                                         
                                     </div>
-                                    <a href="{{route('public.detail', compact('announcement'))}}" class="mt-5 btn btncustom2">Details</a>
+                                    @if(Auth::user()->id == $user->id)
+                                    <a href="{{route('edit', compact('announcement'))}}" class="btn btncustom mt-5">Edit</a>
+                                    
+                                    <a href="" class="mt-5 btn btncustom2" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                                    @endif
+                                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          
+                                          <div class="modal-body bg-dark">
+                                            <h5 class="text30">Are you sure you want to delete this announcement?</h5>
+                                          <form action="{{route('delete', compact('announcement'))}}" method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btncustom">Delete</button>
+                                          </div>
+                                          </form>
+                                          </div>
+                                          
+                                      </div>
+                                    </div>
                                 </div>
                                 <div class="lpa-right ml-5 mb-5">
                                     <a href="#">
@@ -270,10 +295,9 @@
                                             {{$announcement->created_at->format('d/m/Y')}}
                                         </a>
                                     </div>
-                                    <form action="" method="post">
-                                        @csrf
-                                        <a href="{{-- {{route('public.detail', compact('announcement'))}} --}}" class="mt-5 btn btncustom2 px-4">Cancel</a>
-                                    </form>
+                                    
+                                        <a href="" class="mt-5 btn btncustom2 px-4" data-toggle="modal" data-target="#deleteModal2">Cancel</a>
+                                    
                                     
                                     <form action="{{route('revise.again', [$announcement->id])}}" method="post">
                                         @csrf
@@ -287,6 +311,22 @@
                                     
                                 </div>
                             </div>
+                            <div class="modal fade" id="deleteModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  
+                                  <div class="modal-body bg-dark">
+                                    <h5 class="text30">Are you sure you want to delete this announcement?</h5>
+                                  <form action="{{route('delete', compact('announcement'))}}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btncustom">Delete</button>
+                                  </div>
+                                  </form>
+                                  </div>
+                                  
+                              </div>
+                            </div>
                             @endforeach
                         </div>
                     </div>
@@ -294,11 +334,25 @@
 		</div>	
 	</div>
 </div>
-
-
+@if(!Auth::user()->is_revisor)
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-12">
+      <hr class="fluo">
+      <h4 class="text30 text-center">You wanna be a revisor? Click down below</h4>
+      <button class="btn btncustom mx-auto d-block mt-2">RevisorMaker</button>
+      <hr class="fluo">
+    </div>
+  </div>
+</div>
+@endif
 
 
   
   <!-- Modal -->
+  
+
+<!-- Modal -->
+
   
 @endsection

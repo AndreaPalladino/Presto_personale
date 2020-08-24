@@ -481,12 +481,12 @@ img {
                         </div>
                         <p class="text-white">I design and develop services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores</p>
                         @if(Auth::user() && Auth::user()->id != $announcement->user->id)
-                      <form action="{{route('contact.seller')}}" method="post">
+                      <form action="{{route('contact.seller', [$announcement->id])}}" method="post">
                       @csrf
-                      <button type="submit" class="btncustom">Contact</button>
+                      <button type="submit" class="btn btncustom mt-2 px-4 mx-auto">Contact</button>
                       </form>
                        
-                      <a href="{{route('profile.view', [$announcement->user])}}" class="btn btncustom2 float-right">View Profile</a>
+                      <a href="{{route('profile.view', [$announcement->user])}}" class="btn btncustom2  mx-auto my-2">View Profile</a>
                         @endif
                     </div>
                 </div>

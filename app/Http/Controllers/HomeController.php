@@ -91,11 +91,40 @@ class HomeController extends Controller
         return view('profile', compact('user', 'accettati', 'sospesi', 'rifiutati'));
     }
 
-    public function contactSeller(ContactRecieved $contact){
+    public function contactSeller( $ann_id){
 
-        $email = $contact->email;
-        Mail::send($email)->to(new ContactRecieved($contact));
+        $announcement = Announcement::find($ann_id);
+        $email = $announcement->user->email;
+        $contact = Auth::user()->email;
+        
+        Mail::to($email)->send(new ContactRecieved($contact));
 
         return redirect()->back();
+    }
+
+    public function edit(Announcement $announcement){
+        
+        return view('announcements.edit', compact('announcement'));
+    }
+
+    public function update(Request $request, Announcement $announcement){
+
+        
+        $announcement->title = $request->input('title');
+        $announcement->description = $request->input('description');
+        
+        $announcement->category_id = $request->input('category');
+        $announcement->is_accepted = null;
+    
+        $announcement->update();
+
+        return redirect(route('profile'));
+
+    }
+
+    public function delete(Announcement $announcement){
+        $announcement->delete();
+
+        return redirect(route('profile'))->with('deleted', 'ok');
     }
 }

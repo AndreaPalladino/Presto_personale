@@ -10,12 +10,14 @@ use Illuminate\Queue\SerializesModels;
 class ContactRecieved extends Mailable
 {
     use Queueable, SerializesModels;
-     public $contact;
+     
     /**
      * Create a new message instance.
      * 
      * @return void
      */
+    public $contact;
+    
     public function __construct($contact)
     {
         $this->contact = $contact;
@@ -28,7 +30,7 @@ class ContactRecieved extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.contact-mail')
+        return $this->view('emails.contactmail')
                     ->from('noreply@prestoAgP.com');
     }
 }

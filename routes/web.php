@@ -29,7 +29,11 @@ Route::post('/feedbacks/{id}/send', 'HomeController@feedback')->name('feed.store
 Route::get('/user/profile', 'HomeController@profile')->name('profile');
 Route::get('/user/{id}/profilo', 'HomeController@viewProfile')->name('profile.view');
 Route::post('/user/revise/{id}/again', 'HomeController@reviseAgain')->name('revise.again');
-Route::post('/user/contactSeller', 'HomeController@contactSeller')->name('contact.seller');
+Route::post('/user/{id}/contactSeller', 'HomeController@contactSeller')->name('contact.seller');
+Route::get('/user/announcement/{announcement}/edit', 'HomeController@edit')->name('edit');
+Route::put('/user/announcement/{announcement}/update', 'HomeController@update')->name('update');
+Route::delete('/user/announcement/{announcement}/delete', 'HomeController@delete')->name('delete');
+
 
 
 /* REVISORE */
