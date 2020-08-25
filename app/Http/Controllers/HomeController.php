@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Contact;
 use App\Feedback;
 use App\Announcement;
 use App\Jobs\ResizeImage;
+use App\Mail\AskRecieved;
 use App\AnnouncementImage;
 use Illuminate\Http\Request;
 use App\Mail\ContactRecieved;
@@ -205,6 +207,28 @@ class HomeController extends Controller
         Mail::to($email)->send(new ContactRecieved($contact));
 
         return redirect()->back()->with('contact', 'ok');
+    }
+
+    public function askRevisor(){
+       
+        return view('contact');
+    }
+
+    public function contactSubmit(Request $request){
+        
+        $contact = new Contact();
+        $name=$request->input('name');
+        $email=$request->input('email');
+        $request=$request->input('request');
+        
+        $contact = compact('name','email','request');
+
+        
+
+       
+        Mail::to($email)->send(new AskRecieved($contact));
+
+        return redirect()->back()->with('asked', 'ok');
     }
 
     public function edit(Announcement $announcement){

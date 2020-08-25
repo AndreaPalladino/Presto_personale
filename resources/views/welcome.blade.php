@@ -8,13 +8,7 @@
 @endsection
 @section('content')
     
-@if (session('access.denied'))
-    <div class="alert alert-danger text-center">
-      Access denied. Revisor only!
 
-    </div>
-    
-@endif
  <header id="header">
     <div class="overlay"></div>
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -32,13 +26,23 @@
               <span class="h1 letter text10">0</span>
           </h1>
           <h6 class="lead mb-0 slug">your <span class="h4 text10 slug">e-commerce </span>drug</h6>
-        <a href="{{route('ann.new')}}" class="btn btn-custom animation mt-4">Inserisci annuncio</a>
+        <a href="{{route('ann.new')}}" class="btn btn-custom animation mt-4">Create Announcement</a>
         </div>
       </div>
     </div>
   </header>
+  @if (session('access.denied'))
+    <div class="alert alert-danger text-center">
+      Access denied. Revisor only!
 
-  
+    </div>
+ @endif
+  @if (session('admin.denied'))
+    <div class="alert alert-danger text-center">
+      Access denied. Admin only!
+
+    </div>
+  @endif
 
    <div class="container my-5 py-5">
      <div class="row">

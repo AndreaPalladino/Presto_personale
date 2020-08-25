@@ -36,6 +36,9 @@ Route::delete('/user/announcement/{announcement}/delete', 'HomeController@delete
 Route::post('/announcement/images/upload', 'HomeController@uploadImage')->name('announcement.images.upload');
 Route::delete('/announcement/images/remove', 'HomeController@removeImage')->name('announcement.images.remove');
 Route::get('/announcement/images', 'HomeController@getImages')->name('announcement.images');
+Route::get('/profile/contact/revisor', 'HomeController@askRevisor')->name('ask.become');
+Route::post('/profile/contact/Submit', 'HomeController@contactSubmit')->name('contact.submit');
+
 
 
 
@@ -44,5 +47,9 @@ Route::get('/revisor/home', 'RevisorController@home')->name('revisorHome');
 Route::post('/revisor/{announcement}/accept', 'RevisorController@accept')->name('revisor.accept');
 Route::post('/revisor/{announcement}/reject', 'RevisorController@reject')->name('revisor.reject');
 
+/* AMMINISTRATORE */
+Route::get('/admin/userList', 'AdminController@userList')->name('userlist');
+Route::post('/admin/{id}/makeRevisor', 'AdminController@makeRevisor')->name('make.revisor');
+Route::post('/admin/{id}/unMakeRevisor', 'AdminController@unMakeRevisor')->name('unMake.revisor');
 
 

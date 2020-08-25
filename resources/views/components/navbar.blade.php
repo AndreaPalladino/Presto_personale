@@ -54,6 +54,9 @@
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 <i class="fas fa-user mr-1"></i> Profile 
                             </a>
+                            <a class="dropdown-item" href="{{ route('userlist') }}">
+                                <i class="fas fa-times mr-1"></i> Admin 
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

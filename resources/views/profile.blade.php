@@ -202,13 +202,21 @@
 		</div>	
 	</div>
 </div>
+@if (session('asked'))
+    <div class="alert alert-success text-center">
+        Request sended!
+    </div>
+    
+@endif
 @if(Auth::user()->id==$user->id && !Auth::user()->is_revisor)
 <div class="container mb-5">
   <div class="row">
     <div class="col-12 ml-md-5">
       <div class="bio-info2 ml-3 ml-md-5">
         <h4 class="text30 text-center">You wanna be a revisor? Click down below</h4>
-        <button class="btn btncustom mx-auto d-block mt-2">RevisorMaker</button>
+      
+        <a href="{{route('ask.become')}}" class="btn btncustom mx-auto d-block mt-2">RevisorMaker</a>
+      
       </div>
       
       
