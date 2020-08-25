@@ -10909,6 +10909,10 @@ a.text-dark:focus {
   --trenta: #08e8de;
 }
 
+.bg10 {
+  background-color: var(--dieci);
+}
+
 .bg30 {
   background-color: var(--trenta);
 }
@@ -11248,6 +11252,18 @@ header .overlay {
   background-color: var(--trenta);
 }
 
+.fluo2 {
+  width: 33%;
+  height: 2px;
+  background-color: var(--dieci);
+}
+
+.fluo3 {
+  width: 100%;
+  height: 2px;
+  background-color: var(--dieci);
+}
+
 .badge-custom {
   background-color: var(--trenta);
 }
@@ -11258,6 +11274,23 @@ header .overlay {
 
 .border-images {
   border: 2px solid var(--trenta) !important;
+}
+
+.googleapi {
+  width: 500px;
+  background-color: black !important;
+  border: 2px solid var(--trenta);
+}
+
+.stick {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 700px;
+  display: flex;
+}
+
+.list-custom {
+  list-style: none;
 }
 
 .portfolio {

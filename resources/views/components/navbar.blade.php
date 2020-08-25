@@ -41,7 +41,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('revisorHome')}}"><i class="fas fa-check mr-1"></i> To Revise</a>
-                        <a class="dropdown-item" href="{{-- {{route('rejectedadds')}} --}}"><i class="fas fa-times mr-1"></i> Rejected Ads</a>
+                        <a class="dropdown-item" href="{{route('rejected.list')}}"><i class="fas fa-times mr-1"></i> Rejected Ads <span class="badge badge-pill badge-custom">{{\App\Announcement::RejectedCount()}}</span></a>
+                        
                     </div>
                 </li>
                 @endif

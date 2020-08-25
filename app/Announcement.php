@@ -38,6 +38,10 @@ class Announcement extends Model
         return Announcement::where('is_accepted',null)->count();
     }
 
+    static public function RejectedCount(){
+        return Announcement::where('is_accepted',false)->count();
+    }
+
     public function toSearchableArray(){
 
         $category=$this->category()->pluck('name')->join(', ');

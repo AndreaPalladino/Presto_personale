@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Storage;
 
 class AnnouncementImage extends Model
 {
-    /* protected $casts = [
+     protected $casts = [
         'labels'=>'array',
-      ]; */
+      ]; 
 
     public function announcement(){
         return $this->belongsTo(Announcement::class);

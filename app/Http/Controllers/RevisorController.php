@@ -33,4 +33,23 @@ class RevisorController extends Controller
     public function reject($announcement_id){
         return $this->setAccepted($announcement_id,false);
     }
+
+    public function rejectedList(){
+        $announcements = Announcement::where('is_accepted', false)->get();
+
+        return view('revisor.rejectedList', compact('announcements'));
+    }
+
+    public function rejectDelete(Announcement $announcement){
+        $announcement->delete();
+
+        return redirect()->back();
+    }
+
+    public function rejectAccept(Announcement $announcement){
+        $announcement->is_accepted = true;
+        $announcement->save();
+
+        return redirect()->back();
+    }
 }

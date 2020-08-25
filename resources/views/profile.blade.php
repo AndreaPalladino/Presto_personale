@@ -86,17 +86,21 @@
                                         
                                     </div>
                                     @if(Auth::user()->id == $user->id)
-                                    <a href="{{route('edit', compact('announcement'))}}" class="btn btncustom mt-5">Edit</a>
+                                    <a href="{{route('edit', compact('announcement'))}}" class="btn btncustom mt-5 px-4">Edit</a>
                                     
-                                    <a href="" class="mt-5 btn btncustom2" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                                    <form action="{{route('accept.delete', compact('announcement'))}}" method="post">
+                                      @method('DELETE')
+                                      @csrf
+                                      <button type="submit" class="btn btncustom2 mt-2 px-4">Delete</button>
+                                    </form>
                                     @endif
-                                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                   {{--  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                       <div class="modal-dialog">
                                         <div class="modal-content">
                                           
                                           <div class="modal-body bg-dark">
                                             <h5 class="text30">Are you sure you want to delete this announcement?</h5>
-                                          <form action="{{route('delete', compact('announcement'))}}" method="post">
+                                          <form action="{{route('accept.delete', [$announcement->id])}}" method="post">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btncustom">Delete</button>
@@ -105,7 +109,7 @@
                                           </div>
                                           
                                       </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-12 col-md-6 d-none d-md-flex lpa-right ml-5 mb-5">
                                     
@@ -164,7 +168,11 @@
                                         </a>
                                     </div>
                                     
-                                        <a href="" class="mt-5 btn btncustom2 px-4" data-toggle="modal" data-target="#deleteModal2">Cancel</a>
+                                    <form action="{{route('delete', compact('announcement'))}}" method="post">
+                                      @method('DELETE')
+                                      @csrf
+                                      <button type="submit" class="btn btncustom2 px-4 mt-4">Cancel</button>
+                                    </form>
                                     
                                     
                                     <form action="{{route('revise.again', [$announcement->id])}}" method="post">
@@ -179,24 +187,9 @@
                                     
                                 </div>
                             </div>
-                            <div class="modal fade" id="deleteModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  
-                                  <div class="modal-body bg-dark">
-                                    <h5 class="text30">Are you sure you want to delete this announcement?</h5>
-                                  <form action="{{route('delete', compact('announcement'))}}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btncustom">Delete</button>
-                                  </div>
-                                  </form>
-                                  </div>
-                                  
-                              </div>
-                            </div>
+                            
                             @endforeach
-                        </div>
+                        
                     </div>
 			</div>
 		</div>	

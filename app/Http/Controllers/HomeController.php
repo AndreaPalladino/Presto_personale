@@ -11,10 +11,13 @@ use App\Mail\AskRecieved;
 use App\AnnouncementImage;
 use Illuminate\Http\Request;
 use App\Mail\ContactRecieved;
+use App\Jobs\GoogleVisionLabelImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use App\Jobs\GoogleVisionRemoveFaces;
 use Illuminate\Support\Facades\Storage;
+use App\Jobs\GoogleVisionSafeSearchImage;
 
 class HomeController extends Controller
 {
@@ -77,7 +80,7 @@ class HomeController extends Controller
                 $newFileName,
                 700,
                 300
-            )); 
+            ));  
 
             
             
@@ -88,7 +91,14 @@ class HomeController extends Controller
 
             $i->save();
             
-           
+            dispatch(new GoogleVisionSafeSearchImage($i->id));
+            dispatch(new GoogleVisionLabelImage($i->id)); 
+           /*  GoogleVisionSafeSearchImage::withChain([
+                new GoogleVisionLabelImage($i->id),
+                new GoogleVisionRemoveFaces($i->id),
+                new ResizeImage($i->file, 300, 150),
+                new ResizeImage($i->file, 700, 300),
+            ])->dispatch($i->id);    */
                 
         }
 
@@ -252,6 +262,14 @@ class HomeController extends Controller
     }
 
     public function delete(Announcement $announcement){
+
+        
+        $announcement->delete();
+
+        return redirect(route('profile'))->with('deleted', 'ok');
+    }
+
+    public function acceptedDelete(Announcement $announcement){
         $announcement->delete();
 
         return redirect(route('profile'))->with('deleted', 'ok');

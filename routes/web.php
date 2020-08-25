@@ -38,6 +38,11 @@ Route::delete('/announcement/images/remove', 'HomeController@removeImage')->name
 Route::get('/announcement/images', 'HomeController@getImages')->name('announcement.images');
 Route::get('/profile/contact/revisor', 'HomeController@askRevisor')->name('ask.become');
 Route::post('/profile/contact/Submit', 'HomeController@contactSubmit')->name('contact.submit');
+Route::delete('/profile/{announcement}/deleteaccepted', 'HomeController@acceptedDelete')->name('accept.delete');
+Route::delete('/profile/{announcement}/deleterejected', 'HomeController@rejectedDelete')->name('reject.delete');
+
+
+
 
 
 
@@ -46,6 +51,11 @@ Route::post('/profile/contact/Submit', 'HomeController@contactSubmit')->name('co
 Route::get('/revisor/home', 'RevisorController@home')->name('revisorHome');
 Route::post('/revisor/{announcement}/accept', 'RevisorController@accept')->name('revisor.accept');
 Route::post('/revisor/{announcement}/reject', 'RevisorController@reject')->name('revisor.reject');
+Route::get('/revisor/rejectedAds', 'RevisorController@rejectedList')->name('rejected.list');
+Route::delete('/announcement/rejected/{announcement}/delete', 'RevisorController@rejectDelete')->name('rejected.remove');
+Route::post('/announcement/rejected/{announcement}/accept', 'RevisorController@rejectAccept')->name('rejected.accept');
+
+
 
 /* AMMINISTRATORE */
 Route::get('/admin/userList', 'AdminController@userList')->name('userlist');

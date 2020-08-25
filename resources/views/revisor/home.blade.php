@@ -26,29 +26,35 @@
   <div class="container my-5 py-5">
     <div class="row">
         <div class="col-md-7">
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              @foreach($announcement->images as $key=>$image)
-              <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+              @foreach($announcement->images as $image)
+              
               <img src="{{$image->getUrl(300,150)}}" class="d-block w-100">
+              
+              <div class="card googleapi my-5">
+                <div class="card-body">
+                   <h5 class="text30 text-center"> <span class="semaforo"> {{$image->adult}} </h5>
+                   <h5 class="text30 text-center"> <span class="semaforo"> {{$image->spoof}} </h5>
+                   <h5 class="text30 text-center"> <span class="semaforo"> {{$image->medical}} </h5>
+                   <h5 class="text30 text-center"> <span class="semaforo"> {{$image->violence}} </h5>
+                   <h5 class="text30 text-center"> <span class="semaforo">{{$image->racy}} </h5>
+                </div>
               </div>
+              @if ($image->labels)
+                                    <div class="mb-5">
+                                        @foreach ($image->labels as $label)
+                                            <span class="bg10 px-1 ml-1 rounded">#{{$label}}</span>   
+                                        @endforeach
+                                    </div> 
+                @endif
+             
               @endforeach
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon margin-custom" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
         </div>
         <div class="col-md-5 card cardCustom">
           <h3 class="mt-3 text10">{{$announcement->title}}</h3>
           <p class="text-left">Added by: <span class="p text10">{{$announcement->user->name}}</span></p>
           <p>{{$announcement->description}}</p>
-        <div class="my-auto">
+        
+        <div class="stick">
         <hr class="fluo">
         <form action="{{route('revisor.accept', compact('announcement'))}}" method="post">
             @csrf
@@ -59,8 +65,10 @@
             @csrf
             <button class="btn btncustom2 float-right mb-3">Reject</button>
         </form>
+       </div>
+        
         </div>
-        </div>
+        
       </div>
   </div>
 @else
