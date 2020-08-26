@@ -70,7 +70,7 @@ class HomeController extends Controller
             Storage::move($image, $newFileName);
 
             
-            dispatch(new ResizeImage(
+           /*  dispatch(new ResizeImage(
                 $newFileName,
                 300,
                 150
@@ -81,7 +81,7 @@ class HomeController extends Controller
                 700,
                 300
             ));  
-
+ */
             
             
             
@@ -91,14 +91,14 @@ class HomeController extends Controller
 
             $i->save();
             
-            dispatch(new GoogleVisionSafeSearchImage($i->id));
-            dispatch(new GoogleVisionLabelImage($i->id)); 
-           /*  GoogleVisionSafeSearchImage::withChain([
+           /*  dispatch(new GoogleVisionSafeSearchImage($i->id));
+            dispatch(new GoogleVisionLabelImage($i->id));  */
+           GoogleVisionSafeSearchImage::withChain([
                 new GoogleVisionLabelImage($i->id),
                 new GoogleVisionRemoveFaces($i->id),
                 new ResizeImage($i->file, 300, 150),
-                new ResizeImage($i->file, 700, 300),
-            ])->dispatch($i->id);    */
+                new ResizeImage($i->file, 400, 300),
+            ])->dispatch($i->id);    
                 
         }
 
