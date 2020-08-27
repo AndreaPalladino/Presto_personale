@@ -11206,8 +11206,21 @@ header .overlay {
 }
 
 .cardCustom {
-  background-color: transparent;
-  border: 2px solid var(--trenta);
+  background: linear-gradient(to right, var(--trenta) 2px, transparent 2px) 0 0, linear-gradient(to right, var(--trenta) 2px, transparent 2px) 0 100%, linear-gradient(to left, var(--trenta) 2px, transparent 2px) 100% 0, linear-gradient(to left, var(--trenta) 2px, transparent 2px) 100% 100%, linear-gradient(to bottom, var(--trenta) 2px, transparent 2px) 0 0, linear-gradient(to bottom, var(--trenta) 2px, transparent 2px) 100% 0, linear-gradient(to top, var(--trenta) 2px, transparent 2px) 0 100%, linear-gradient(to top, var(--trenta) 2px, transparent 2px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  /*  background-color: transparent; */
+  /* border: 2px solid var(--trenta); */
+  color: var(--trenta) !important;
+}
+
+.cardCustom .card-img-top {
+  margin-top: 13px;
+  background: linear-gradient(to right, var(--trenta) 2px, transparent 2px) 0 0, linear-gradient(to right, var(--trenta) 2px, transparent 2px) 0 100%, linear-gradient(to left, var(--trenta) 2px, transparent 2px) 100% 0, linear-gradient(to left, var(--trenta) 2px, transparent 2px) 100% 100%, linear-gradient(to bottom, var(--trenta) 2px, transparent 2px) 0 0, linear-gradient(to bottom, var(--trenta) 2px, transparent 2px) 100% 0, linear-gradient(to top, var(--trenta) 2px, transparent 2px) 0 100%, linear-gradient(to top, var(--trenta) 2px, transparent 2px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  /*  background-color: transparent; */
+  /* border: 2px solid var(--trenta); */
   color: var(--trenta) !important;
 }
 
